@@ -13,7 +13,7 @@ public class Test {
 			Otoczenie otoczenie = new Otoczenie(smo);
 			
 			//model.setEndSimTime(30);
-			SimControlEvent stop = new SimControlEvent(30., SimControlStatus.STOPSIMULATION);
+			SimControlEvent stop = new SimControlEvent(100.0, SimControlStatus.STOPSIMULATION);
 			model.startSimulation();
 			System.out.println("Liczba straconych zgloszen: " + smo.odrzucone());
 		}

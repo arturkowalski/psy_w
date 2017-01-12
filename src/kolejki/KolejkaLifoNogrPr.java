@@ -6,10 +6,13 @@ import smo.Zgloszenie;
 
 public class KolejkaLifoNogrPr implements KolejkaI {
 	private final PriorityQueue<Zgloszenie> bufor;
-	private final Comparator<Zgloszenie> komparator;
+	private static final Comparator<Zgloszenie> komparator;
+	
+	static {
+		komparator = Zgloszenie.komparatorLifo();
+	}
 	
 	public KolejkaLifoNogrPr() {
-		komparator = Zgloszenie.komparatorLifo();
 		bufor = new PriorityQueue<>(komparator);
 	}
 	

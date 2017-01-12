@@ -34,7 +34,7 @@ public final class KolejkaFifoOgrNpr implements KolejkaI {
 	
 	public void wstaw(final Zgloszenie zgloszenie) {
 		if (kolejkaPelna()) {
-			throw new IllegalStateException("\nKolejka puelna");
+			throw new IllegalStateException("\nKolejka pelna");
 		}
 		
 		bufor.add(zgloszenie);

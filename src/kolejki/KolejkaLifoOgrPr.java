@@ -6,15 +6,18 @@ import smo.Zgloszenie;
 
 public class KolejkaLifoOgrPr implements KolejkaI {
 	private final PriorityQueue<Zgloszenie> bufor;
-	private final Comparator<Zgloszenie> komparator;
+	private static final Comparator<Zgloszenie> komparator;
 	private int dlugosc;
+	
+	static {
+		komparator = Zgloszenie.komparatorLifo();
+	}
 	
 	public KolejkaLifoOgrPr(final int dlugosc) {
 		if (dlugosc <= 0) {
 			throw new IllegalArgumentException("\nDlugosc mniejsza niz 1");
 		}
 		
-		komparator = Zgloszenie.komparatorLifo();
 		bufor = new PriorityQueue<>(dlugosc, komparator);
 		this.dlugosc = dlugosc;
 	}
