@@ -2,8 +2,6 @@ import dissimlab.simcore.SimManager;
 import dissimlab.simcore.SimControlEvent;
 import dissimlab.simcore.SimParameters.SimControlStatus;
 import dissimlab.simcore.SimControlException;
-import smo.Otoczenie;
-import smo.Smo;
 
 public class Test {
 	public static void main(String[] args) {
