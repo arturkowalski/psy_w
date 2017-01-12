@@ -35,10 +35,10 @@ public final class Sekwencja {
 		return roznica;
 	}
 	
-	public int nastepny() throws SekwencjaZuzytaWyj {
+	public int nastepny() {
 		if (add(nastepny, roznica)) {
 			if (nastepny + roznica != pierwszy) {
-				throw new SekwencjaZuzytaWyj();
+				throw new IllegalStateException("\nSekwencja zuzyta");
 			}
 		}
 		
@@ -58,13 +58,9 @@ public final class Sekwencja {
 	
 	public static void main(String[] args) {
 		Sekwencja numery = new Sekwencja(2000000000, -1000);
-		try {
-			while (true) {
-				System.out.println(numery.nastepny());
-			}
-		}
-		catch (SekwencjaZuzytaWyj wyj) {
-			System.out.println(wyj.toString());
+		
+		while (true) {
+			System.out.println(numery.nastepny());
 		}
 	}
 }

@@ -15,10 +15,10 @@ public interface KolejkaI {
 	
 	int stan();
 	
-	void wstaw(final Zgloszenie zgloszenie) throws KolejkaPelnaWyj;
+	void wstaw(final Zgloszenie zgloszenie);
 	
-	Zgloszenie nastepne() throws KolejkaPustaWyj;
-	Zgloszenie usun() throws KolejkaPustaWyj;
+	Zgloszenie nastepne();
+	Zgloszenie usun();
 	
-	void usunWybrane(Zgloszenie zgloszenie) throws KolejkaPustaWyj;
+	void usunWybrane(Zgloszenie zgloszenie);
 }

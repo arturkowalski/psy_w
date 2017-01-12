@@ -4,8 +4,8 @@ import dissimlab.simcore.BasicSimObj;
 import dissimlab.simcore.SimControlException;
 import dissimlab.broker.IPublisher;
 import dissimlab.broker.INotificationEvent;
-import kolejki.Kolejka;
 import kolejki.KolejkaI;
+import kolejki.Kolejka;
 
 public final class Smo extends BasicSimObj {
 	private final KolejkaI kolejka;

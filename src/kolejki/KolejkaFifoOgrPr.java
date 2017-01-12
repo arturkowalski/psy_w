@@ -35,33 +35,33 @@ public class KolejkaFifoOgrPr implements KolejkaI {
 		return bufor.size();
 	}
 	
-	public void wstaw(final Zgloszenie zgloszenie) throws KolejkaPelnaWyj {
+	public void wstaw(final Zgloszenie zgloszenie) {
 		if (kolejkaPelna()) {
-			throw new KolejkaPelnaWyj(dlugosc, zgloszenie);
+			throw new IllegalStateException("\nKolejka pelna");
 		}
 		
 		bufor.add(zgloszenie);
 	}
 	
-	public Zgloszenie nastepne() throws KolejkaPustaWyj {
+	public Zgloszenie nastepne() {
 		if (kolejkaPusta()) {
-			throw new KolejkaPustaWyj();
+			throw new IllegalStateException("\nKolejka pusta");
 		}
 		
 		return bufor.peek();
 	}
 	
-	public Zgloszenie usun() throws KolejkaPustaWyj {
+	public Zgloszenie usun() {
 		if (kolejkaPusta()) {
-			throw new KolejkaPustaWyj();
+			throw new IllegalStateException("\nKolejka pusta");
 		}
 		
 		return bufor.poll();
 	}
 	
-	public void usunWybrane(final Zgloszenie zgloszenie) throws KolejkaPustaWyj {
+	public void usunWybrane(final Zgloszenie zgloszenie) {
 		if (kolejkaPusta()) {
-			throw new KolejkaPustaWyj();
+			throw new IllegalStateException("\nKolejka pusta");
 		}
 		
 		bufor.remove(zgloszenie);

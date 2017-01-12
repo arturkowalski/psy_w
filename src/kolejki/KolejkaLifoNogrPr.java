@@ -25,25 +25,25 @@ public class KolejkaLifoNogrPr implements KolejkaI {
 		bufor.add(zgloszenie);
 	}
 	
-	public Zgloszenie nastepne() throws KolejkaPustaWyj {
+	public Zgloszenie nastepne() {
 		if (kolejkaPusta()) {
-			throw new KolejkaPustaWyj();
+			throw new IllegalStateException("\nKolejka pusta");
 		}
 		
 		return bufor.peek();
 	}
 	
-	public Zgloszenie usun() throws KolejkaPustaWyj {
+	public Zgloszenie usun() {
 		if (kolejkaPusta()) {
-			throw new KolejkaPustaWyj();
+			throw new IllegalStateException("\nKolejka pusta");
 		}
 		
 		return bufor.poll();
 	}
 	
-	public void usunWybrane(final Zgloszenie zgloszenie) throws KolejkaPustaWyj {
+	public void usunWybrane(final Zgloszenie zgloszenie) {
 		if (kolejkaPusta()) {
-			throw new KolejkaPustaWyj();
+			throw new IllegalStateException("\nKolejka pusta");
 		}
 		
 		bufor.remove(zgloszenie);

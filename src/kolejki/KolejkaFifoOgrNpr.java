@@ -32,33 +32,33 @@ public final class KolejkaFifoOgrNpr implements KolejkaI {
 		return bufor.size();
 	}
 	
-	public void wstaw(final Zgloszenie zgloszenie) throws KolejkaPelnaWyj {
+	public void wstaw(final Zgloszenie zgloszenie) {
 		if (kolejkaPelna()) {
-			throw new KolejkaPelnaWyj(dlugosc, zgloszenie);
+			throw new IllegalStateException("\nKolejka puelna");
 		}
 		
 		bufor.add(zgloszenie);
 	}
 	
-	public Zgloszenie nastepne() throws KolejkaPustaWyj {
+	public Zgloszenie nastepne() {
 		if (kolejkaPusta()) {
-			throw new KolejkaPustaWyj();
+			throw new IllegalStateException("\nKolejka pusta");
 		}
 		
 		return bufor.getFirst();
 	}
 	
-	public Zgloszenie usun() throws KolejkaPustaWyj {
+	public Zgloszenie usun() {
 		if (kolejkaPusta()) {
-			throw new KolejkaPustaWyj();
+			throw new IllegalStateException("\nKolejka pusta");
 		}
 		
 		return bufor.removeFirst();
 	}
 	
-	public void usunWybrane(final Zgloszenie zgloszenie) throws KolejkaPustaWyj {
+	public void usunWybrane(final Zgloszenie zgloszenie) {
 		if (kolejkaPusta()) {
-			throw new KolejkaPustaWyj();
+			throw new IllegalStateException("\nKolejka pusta");
 		}
 		
 		bufor.remove(zgloszenie);
