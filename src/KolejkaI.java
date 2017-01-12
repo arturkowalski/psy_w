@@ -1,10 +1,10 @@
 public interface KolejkaI {
 	default int dlugosc() {
-		throw new UnsupportedOperationException("\nDlugosc bufora ukryta");
+		throw new UnsupportedOperationException("\nDlugosc bufora niedostepna");
 	}
 	
 	default boolean kolejkaPelna() {
-		throw new UnsupportedOperationException("\nKolejka nie moze byc pelna");
+		throw new UnsupportedOperationException("\nDlugosc kolejki nieograniczona");
 	}
 	
 	boolean kolejkaPusta();
@@ -17,5 +17,5 @@ public interface KolejkaI {
 	
 	Zgloszenie usun();
 	
-	void usunWybrane(Zgloszenie zgloszenie);
+	void usunWybrane(final Zgloszenie zgloszenie);
 }

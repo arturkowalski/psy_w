@@ -87,6 +87,6 @@ public enum Kolejka {
 	}
 	
 	public static KolejkaI stworz(final String typKolejki, final int dlugosc) {
-		return Kolejka.valueOf(typKolejki).stworz();
+		return Kolejka.valueOf(typKolejki).stworz(dlugosc);
 	}
 }

@@ -7,10 +7,6 @@ public final class KolejkaFifoNogrNpr implements KolejkaI {
 		bufor = new LinkedList<>();
 	}
 	
-	public KolejkaFifoNogrNpr(int dlugoscPoczatkowa) {
-		bufor = new LinkedList<>();
-	}
-	
 	public boolean kolejkaPusta() {
 		return bufor.isEmpty();
 	}

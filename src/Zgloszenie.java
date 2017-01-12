@@ -21,6 +21,10 @@ public final class Zgloszenie extends BasicSimObj {
 			throw new IllegalArgumentException("\nPriorytet spoza zakresu");
 		}
 		
+		if (smo == null) {
+			throw new IllegalArgumentException("\nSmo-null");
+		}
+		
 		this.numer = numer;
 		this.czasNadejscia = czasNadejscia;
 		this.priorytet = priorytet;
