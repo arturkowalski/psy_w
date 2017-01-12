@@ -1,10 +1,10 @@
 public interface KolejkaI {
 	default int dlugosc() {
-		throw new UnsupportedOperationException("\nDlugosc bufora niedostepna");
+		throw new UnsupportedOperationException("\nKolejkaI - metoda dlugosc() niedostepna");
 	}
 	
 	default boolean kolejkaPelna() {
-		throw new UnsupportedOperationException("\nDlugosc kolejki nieograniczona");
+		throw new UnsupportedOperationException("\nKolejkaI - metoda kolejkaPelna niedostepna");
 	}
 	
 	boolean kolejkaPusta();

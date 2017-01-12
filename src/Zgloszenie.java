@@ -14,15 +14,15 @@ public final class Zgloszenie extends BasicSimObj {
 	
 	public Zgloszenie(final int numer, final double czasNadejscia, final int priorytet, final Smo smo) throws SimControlException {
 		if (czasNadejscia < 0.0) {
-			throw new IllegalArgumentException("\nCzas nadejscia mniejszy niz 0");
+			throw new IllegalArgumentException("\nZgloszenie - czas nadejscia mniejszy niz 0");
 		}
 		
 		if (priorytet < 1 || priorytet > 10) {
-			throw new IllegalArgumentException("\nPriorytet spoza zakresu");
+			throw new IllegalArgumentException("\nZgloszenie - priorytet spoza zakresu");
 		}
 		
 		if (smo == null) {
-			throw new IllegalArgumentException("\nSmo-null");
+			throw new IllegalArgumentException("\nZgloszenie - smo rowne null");
 		}
 		
 		this.numer = numer;
@@ -58,10 +58,6 @@ public final class Zgloszenie extends BasicSimObj {
 				return -1;
 			}
 		};
-	}
-	
-	public String toString() {
-		return "Zgloszenie " + numer + "/" + czasNadejscia + "/" + priorytet;
 	}
 	
 	public boolean filter(IPublisher ip, INotificationEvent ine) {
