@@ -8,8 +8,8 @@ final class Zgloszenie extends BasicSimObj {
 	private final int numer;
 	private final double czasNadejscia;
 	private final int priorytet;
-	private final OkresNiecierpliwieniaPoczatek okresNiecierpliwieniaPoczatek;
-	OkresNiecierpliwieniaKoniec okresNiecierpliwieniaKoniec;
+	private final OkresNiecierpliwosciPoczatek okresNiecierpliwosciPoczatek;
+	OkresNiecierpliwosciKoniec okresNiecierpliwosciKoniec;
 	final Smo smo;
 	
 	Zgloszenie(final int numer, final double czasNadejscia, final int priorytet, final Smo smo) throws SimControlException {
@@ -28,7 +28,7 @@ final class Zgloszenie extends BasicSimObj {
 		this.numer = numer;
 		this.czasNadejscia = czasNadejscia;
 		this.priorytet = priorytet;
-		okresNiecierpliwieniaPoczatek = new OkresNiecierpliwieniaPoczatek(this);
+		okresNiecierpliwosciPoczatek = new OkresNiecierpliwosciPoczatek(this);
 		this.smo = smo;
 	}
 	

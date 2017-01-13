@@ -1,15 +1,15 @@
 import dissimlab.simcore.BasicSimEvent;
 import dissimlab.simcore.SimControlException;
 
-final class OkresNiecierpliwieniaKoniec extends BasicSimEvent<Zgloszenie, Object> {
+final class OkresNiecierpliwosciKoniec extends BasicSimEvent<Zgloszenie, Object> {
 	private Zgloszenie zgloszenieMatka;
 	
-	OkresNiecierpliwieniaKoniec(Zgloszenie zgloszenieMatka, double odstep) throws SimControlException {
+	OkresNiecierpliwosciKoniec(Zgloszenie zgloszenieMatka, double odstep) throws SimControlException {
 		super(zgloszenieMatka, odstep);
 		this.zgloszenieMatka = zgloszenieMatka;
 	}
 	
-	OkresNiecierpliwieniaKoniec(Zgloszenie zgloszenieMatka) throws SimControlException {
+	OkresNiecierpliwosciKoniec(Zgloszenie zgloszenieMatka) throws SimControlException {
 		super(zgloszenieMatka);
 		this.zgloszenieMatka = zgloszenieMatka;
 	}
