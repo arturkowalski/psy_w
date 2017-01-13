@@ -21,7 +21,7 @@ public final class KolejkaLifoNogrNpr implements KolejkaI {
 	
 	public Zgloszenie nastepne() {
 		if (kolejkaPusta()) {
-			throw new IllegalStateException("\nKolejkaLifoNogrNpr - kolejka pusta");
+			throw new IllegalStateException("KolejkaLifoNogrNpr - kolejka pusta");
 		}
 		
 		return bufor.getLast();
@@ -29,7 +29,7 @@ public final class KolejkaLifoNogrNpr implements KolejkaI {
 	
 	public Zgloszenie usun() {
 		if (kolejkaPusta()) {
-			throw new IllegalStateException("\nKolejkaLifoNogrNpr - kolejka pusta");
+			throw new IllegalStateException("KolejkaLifoNogrNpr - kolejka pusta");
 		}
 		
 		return bufor.removeLast();
@@ -37,7 +37,7 @@ public final class KolejkaLifoNogrNpr implements KolejkaI {
 	
 	public void usunWybrane(final Zgloszenie zgloszenie) {
 		if (kolejkaPusta()) {
-			throw new IllegalStateException("\nKolejkaLifoNogrNpr - kolejka pusta");
+			throw new IllegalStateException("KolejkaLifoNogrNpr - kolejka pusta");
 		}
 		
 		bufor.remove(zgloszenie);

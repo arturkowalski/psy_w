@@ -19,7 +19,7 @@ public final class OkresNiecierpliwieniaPoczatek extends BasicSimEvent<Zgloszeni
 	}
 	
 	protected void stateChange() throws SimControlException {
-		System.out.printf("%016.9f: zgloszenie numer %d w okresie niecierpliwienia (priorytet rowny %d)\n",
+		System.out.printf("%016.9f: Zgloszenie numer %d w okresie niecierpliwosci (priorytet rowny %d)\n",
 			simTime(), zgloszenieMatka.numer(), zgloszenieMatka.priorytet());
 		
 		zgloszenieMatka.okresNiecierpliwieniaKoniec = new OkresNiecierpliwieniaKoniec(zgloszenieMatka, generator.normal(15.0, 1.0));

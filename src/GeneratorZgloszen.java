@@ -25,11 +25,18 @@ public class GeneratorZgloszen extends BasicSimEvent<Otoczenie, Object> {
 	
 	protected void stateChange() throws SimControlException {
 		otoczenieMatka = getSimObj();
+		
+		if (otoczenieMatka.smo.kolejkaPelna()) {
+			System.out.printf("\nKolejka pelna - nowowygenerowane zgloszenie odrzucone\n");
+			
+			return;
+		}
+		
 		Zgloszenie z = new Zgloszenie(numery.nastepny(), simTime(), generatorPriorytetow.nextInt(10) + 1,
 			otoczenieMatka.smo);
 		
 		otoczenieMatka.smo.wstaw(z);
-		System.out.printf("%016.9f: zgloszenie numer %d dodane (priorytet rowny %d)\n",
+		System.out.printf("%016.9f: Zgloszenie numer %d dodane (priorytet rowny %d)\n",
 			simTime(), z.numer(), z.priorytet());
 		
 		if (otoczenieMatka.smo.stan() == 1 && otoczenieMatka.smo.gniazdoWolne()) {

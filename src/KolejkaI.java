@@ -4,7 +4,7 @@ public interface KolejkaI {
 	}
 	
 	default boolean kolejkaPelna() {
-		throw new UnsupportedOperationException("\nKolejkaI - metoda kolejkaPelna niedostepna");
+		return false;
 	}
 	
 	boolean kolejkaPusta();

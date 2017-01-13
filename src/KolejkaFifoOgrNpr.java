@@ -6,7 +6,7 @@ public final class KolejkaFifoOgrNpr implements KolejkaI {
 	
 	public KolejkaFifoOgrNpr(final int dlugosc) {
 		if (dlugosc <= 0) {
-			throw new IllegalArgumentException("\nKolejkaFifoOgrNpr - dlugosc mniejsza niz 1");
+			throw new IllegalArgumentException("KolejkaFifoOgrNpr - dlugosc mniejsza niz 1");
 		}
 		
 		bufor = new LinkedList<>();
@@ -31,7 +31,7 @@ public final class KolejkaFifoOgrNpr implements KolejkaI {
 	
 	public void wstaw(final Zgloszenie zgloszenie) {
 		if (kolejkaPelna()) {
-			throw new IllegalStateException("\nKolejkaFifoOgrNpr - kolejka pelna");
+			throw new IllegalStateException("KolejkaFifoOgrNpr - kolejka pelna");
 		}
 		
 		bufor.add(zgloszenie);
@@ -39,7 +39,7 @@ public final class KolejkaFifoOgrNpr implements KolejkaI {
 	
 	public Zgloszenie nastepne() {
 		if (kolejkaPusta()) {
-			throw new IllegalStateException("\nKolejkaFifoOgrNpr - kolejka pusta");
+			throw new IllegalStateException("KolejkaFifoOgrNpr - kolejka pusta");
 		}
 		
 		return bufor.getFirst();
@@ -47,7 +47,7 @@ public final class KolejkaFifoOgrNpr implements KolejkaI {
 	
 	public Zgloszenie usun() {
 		if (kolejkaPusta()) {
-			throw new IllegalStateException("\nKolejkaFifoOgrNpr - kolejka pusta");
+			throw new IllegalStateException("KolejkaFifoOgrNpr - kolejka pusta");
 		}
 		
 		return bufor.removeFirst();
@@ -55,7 +55,7 @@ public final class KolejkaFifoOgrNpr implements KolejkaI {
 	
 	public void usunWybrane(final Zgloszenie zgloszenie) {
 		if (kolejkaPusta()) {
-			throw new IllegalStateException("\nKolejkaFifoOgrNpr - kolejka pusta");
+			throw new IllegalStateException("KolejkaFifoOgrNpr - kolejka pusta");
 		}
 		
 		bufor.remove(zgloszenie);

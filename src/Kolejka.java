@@ -1,7 +1,7 @@
 public enum Kolejka {
 	KOLEJKA_FIFO_OGR_NPR {
 		KolejkaFifoOgrNpr stworz() {
-			throw new UnsupportedOperationException("\nKolejka - dlugosc nieokreslnona");
+			throw new UnsupportedOperationException("Kolejka - nieznana dlugosc");
 		}
 		
 		KolejkaFifoOgrNpr stworz(int dlugosc) {
@@ -15,13 +15,13 @@ public enum Kolejka {
 		}
 		
 		KolejkaFifoNogrNpr stworz(int dlugosc) {
-			throw new UnsupportedOperationException("\nKolejka - dlugosc zbedna");
+			throw new UnsupportedOperationException("Kolejka - dlugosc zbedna");
 		}
 	},
 	
 	KOLEJKA_LIFO_OGR_NPR {
 		KolejkaLifoOgrNpr stworz() {
-			throw new UnsupportedOperationException("\nKolejka - dlugosc nieokreslona");
+			throw new UnsupportedOperationException("Kolejka - nieznana dlugosc");
 		}
 		
 		KolejkaLifoOgrNpr stworz(int dlugosc) {
@@ -35,13 +35,13 @@ public enum Kolejka {
 		}
 		
 		KolejkaLifoNogrNpr stworz(int dlugosc) {
-			throw new UnsupportedOperationException("\nKolejka - dlugosc zbedna");
+			throw new UnsupportedOperationException("Kolejka - dlugosc zbedna");
 		}
 	},
 	
 	KOLEJKA_FIFO_OGR_PR {
 		KolejkaFifoOgrPr stworz() {
-			throw new UnsupportedOperationException("\nKolejka - dlugosc nieokreslona");
+			throw new UnsupportedOperationException("Kolejka - nieznana dlugosc");
 		}
 		
 		KolejkaFifoOgrPr stworz(int dlugosc) {
@@ -55,13 +55,13 @@ public enum Kolejka {
 		}
 		
 		KolejkaFifoNogrPr stworz(int dlugosc) {
-			throw new UnsupportedOperationException("\nKolejka - dlugosc zbedna");
+			throw new UnsupportedOperationException("Kolejka - dlugosc zbedna");
 		}
 	},
 	
 	KOLEJKA_LIFO_OGR_PR {
 		KolejkaLifoOgrPr stworz() {
-			throw new UnsupportedOperationException("\nKolejka - dlugosc nieokreslona");
+			throw new UnsupportedOperationException("Kolejka - nieznana dlugosc");
 		}
 		
 		KolejkaLifoOgrPr stworz(int dlugosc) {
@@ -75,7 +75,7 @@ public enum Kolejka {
 		}
 		
 		KolejkaLifoNogrPr stworz(int dlugosc) {
-			throw new UnsupportedOperationException("\nKolejka - dlugosc zbedna");
+			throw new UnsupportedOperationException("Kolejka - dlugosc zbedna");
 		}
 	};
 	

@@ -7,9 +7,9 @@ public class Test {
 	public static void main(String[] args) {
 		try {
 			SimManager model = SimManager.getInstance();
-			Smo smo = new Smo("KOLEJKA_FIFO");
+			Smo smo = new Smo("KOLEJKA_FIFO_OGR_NPR", 10);
 			Otoczenie otoczenie = new Otoczenie(smo);
-			SimControlEvent stop = new SimControlEvent(100.0, SimControlStatus.STOPSIMULATION);
+			SimControlEvent stop = new SimControlEvent(100, SimControlStatus.STOPSIMULATION);
 			model.startSimulation();
 			System.out.println("Liczba straconych zgloszen: " + smo.odrzucone());
 		}

@@ -22,7 +22,7 @@ public final class Smo extends BasicSimObj {
 	
 	public Smo(String typKolejki) throws SimControlException {
 		if (typKolejki == null) {
-			throw new IllegalArgumentException("\nSmo - typ kolejki rowny null");
+			throw new IllegalArgumentException("Smo - typ kolejki rowny null");
 		}
 		
 		int i = 0;
@@ -34,7 +34,7 @@ public final class Smo extends BasicSimObj {
 		}
 		
 		if (i == typyKolejek.length) {
-			throw new IllegalArgumentException("\nSmo - typ kolejki bledny");
+			throw new IllegalArgumentException("Smo - typ kolejki bledny");
 		}
 		
 		kolejka = Kolejka.stworz(typKolejki);
@@ -44,11 +44,11 @@ public final class Smo extends BasicSimObj {
 	
 	public Smo(String typKolejki, int dlugosc) throws SimControlException {
 		if (typKolejki == null) {
-			throw new IllegalArgumentException("\nSmo - typ kolejki rowny null");
+			throw new IllegalArgumentException("Smo - typ kolejki rowny null");
 		}
 		
 		if (dlugosc <= 0) {
-			throw new IllegalArgumentException("\nSmo - dlugosc mniejsza niz 1");
+			throw new IllegalArgumentException("Smo - dlugosc mniejsza niz 1");
 		}
 		
 		kolejka = Kolejka.stworz(typKolejki, dlugosc);
@@ -70,6 +70,14 @@ public final class Smo extends BasicSimObj {
 		this.gniazdoWolne = zablokujZwolnij;
 	}
 	
+	public boolean kolejkaPelna() {
+		return kolejka.kolejkaPelna();
+	}
+	
+	public int stan() {
+		return kolejka.stan();
+	}
+	
 	public void wstaw(Zgloszenie zgloszenie) {
 		kolejka.wstaw(zgloszenie);
 	}
@@ -81,10 +89,6 @@ public final class Smo extends BasicSimObj {
 	public void usunWybrane(Zgloszenie zgloszenie) {
 		kolejka.usunWybrane(zgloszenie);
 		utylizator.zapamietaj();
-	}
-	
-	public int stan() {
-		return kolejka.stan();
 	}
 	
 	public int odrzucone() {

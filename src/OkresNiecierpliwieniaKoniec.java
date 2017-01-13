@@ -15,15 +15,15 @@ public final class OkresNiecierpliwieniaKoniec extends BasicSimEvent<Zgloszenie,
 	}
 	
 	protected void stateChange() throws SimControlException {
-		System.out.printf("%016.9f: koniec okresu niecierpliwienia zgloszenia numer %d (priorytet rowny %d)\n",
+		System.out.printf("%016.9f: Koniec okresu niecierpliwosci zgloszenia numer %d (priorytet rowny %d)\n",
 			simTime(), zgloszenieMatka.numer(), zgloszenieMatka.priorytet());
 		
 		zgloszenieMatka.smo.usunWybrane(zgloszenieMatka);
-		System.out.printf("%016.9f: zgloszenie numer %d usuniete\n", simTime(), zgloszenieMatka.numer());
+		System.out.printf("%016.9f: Zgloszenie numer %d usuniete\n", simTime(), zgloszenieMatka.numer());
 	}
 	
 	protected void onInterruption() throws SimControlException {
-		System.out.printf("%016.9f: zgloszenie numer %d poza okresem niecierpliwienia\n",
+		System.out.printf("%016.9f: Zgloszenie numer %d poza okresem niecierpliwosci\n",
 			simTime(), zgloszenieMatka.numer());
 	}
 	
