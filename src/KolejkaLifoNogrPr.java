@@ -1,15 +1,15 @@
-package kolejki;
-
 import java.util.PriorityQueue;
 import java.util.Comparator;
-import smo.Zgloszenie;
 
-public class KolejkaFifoNogrPr implements KolejkaI {
+final class KolejkaLifoNogrPr implements KolejkaI {
 	private final PriorityQueue<Zgloszenie> bufor;
-	private final Comparator<Zgloszenie> komparator;
+	private final static Comparator<Zgloszenie> komparator;
 	
-	public KolejkaFifoNogrPr() {
-		komparator = Zgloszenie.komparatorFifo();
+	static {
+		komparator = Zgloszenie.komparatorLifo();
+	}
+	
+	KolejkaLifoNogrPr() {
 		bufor = new PriorityQueue<>(komparator);
 	}
 	
@@ -25,25 +25,25 @@ public class KolejkaFifoNogrPr implements KolejkaI {
 		bufor.add(zgloszenie);
 	}
 	
-	public Zgloszenie nastepne() throws KolejkaPustaWyj {
+	public Zgloszenie nastepne() {
 		if (kolejkaPusta()) {
-			throw new KolejkaPustaWyj();
+			throw new IllegalStateException("Kolejka pusta");
 		}
 		
 		return bufor.peek();
 	}
 	
-	public Zgloszenie usun() throws KolejkaPustaWyj {
+	public Zgloszenie usun() {
 		if (kolejkaPusta()) {
-			throw new KolejkaPustaWyj();
+			throw new IllegalStateException("Kolejka pusta");
 		}
 		
 		return bufor.poll();
 	}
 	
-	public void usunWybrane(final Zgloszenie zgloszenie) throws KolejkaPustaWyj {
+	public void usunWybrane(final Zgloszenie zgloszenie) {
 		if (kolejkaPusta()) {
-			throw new KolejkaPustaWyj();
+			throw new IllegalStateException("Kolejka pusta");
 		}
 		
 		bufor.remove(zgloszenie);

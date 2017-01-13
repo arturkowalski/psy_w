@@ -1,20 +1,18 @@
-package smo;
-
 import dissimlab.simcore.BasicSimEvent;
 import dissimlab.simcore.SimControlException;
 import dissimlab.random.SimGenerator;
 
-public class ObslugaPoczatek extends BasicSimEvent<Smo, Zgloszenie> {
+class ObslugaPoczatek extends BasicSimEvent<Smo, Zgloszenie> {
 	private final Smo smoMatka;
 	private final SimGenerator generator;
 	
-	public ObslugaPoczatek(Smo smoMatka, double odstep) throws SimControlException {
+	ObslugaPoczatek(Smo smoMatka, double odstep) throws SimControlException {
 		super(smoMatka, odstep);
 		this.smoMatka = smoMatka;
 		generator = new SimGenerator();
 	}
 	
-	public ObslugaPoczatek(Smo smoMatka) throws SimControlException {
+	ObslugaPoczatek(Smo smoMatka) throws SimControlException {
 		super(smoMatka);
 		this.smoMatka = smoMatka;
 		generator = new SimGenerator();
@@ -24,9 +22,9 @@ public class ObslugaPoczatek extends BasicSimEvent<Smo, Zgloszenie> {
 		if (smoMatka.stan() > 0) {
 			smoMatka.zwolnijZablokuj(false);
 			Zgloszenie z = smoMatka.usun();
-			z.okresNiecierpliwieniaKoniec.interrupt();
+			z.okresNiecierpliwosciKoniec.interrupt();
 			double czasObslugi = generator.normal(9.0, 1.0);
-			System.out.printf("%016.9f: obsluga zgloszenia numer %d rozpoczeta (priorytet rowny %d)\n",
+			System.out.printf("%017.9f: Obsluga zgloszenia numer %d rozpoczeta (priorytet rowny %d)\n",
 				simTime(), z.numer(), z.priorytet());
 			
 			smoMatka.obslugaKoniec = new ObslugaKoniec(smoMatka, czasObslugi, z);

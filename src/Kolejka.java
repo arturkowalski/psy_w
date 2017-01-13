@@ -1,9 +1,7 @@
-package kolejki;
-
-public enum Kolejka {
+enum Kolejka {
 	KOLEJKA_FIFO_OGR_NPR {
 		KolejkaFifoOgrNpr stworz() {
-			throw new UnsupportedOperationException("\nDlugosc nieokreslona");
+			throw new UnsupportedOperationException("Kolejka - nieznana dlugosc");
 		}
 		
 		KolejkaFifoOgrNpr stworz(int dlugosc) {
@@ -17,13 +15,13 @@ public enum Kolejka {
 		}
 		
 		KolejkaFifoNogrNpr stworz(int dlugosc) {
-			throw new UnsupportedOperationException("\nPojecie dlugosci nie ma zastsowania");
+			throw new UnsupportedOperationException("Kolejka - dlugosc zbedna");
 		}
 	},
 	
 	KOLEJKA_LIFO_OGR_NPR {
 		KolejkaLifoOgrNpr stworz() {
-			throw new UnsupportedOperationException("\nDlugosc nieokreslona");
+			throw new UnsupportedOperationException("Kolejka - nieznana dlugosc");
 		}
 		
 		KolejkaLifoOgrNpr stworz(int dlugosc) {
@@ -37,13 +35,13 @@ public enum Kolejka {
 		}
 		
 		KolejkaLifoNogrNpr stworz(int dlugosc) {
-			throw new UnsupportedOperationException("\nPojecie dlugosci nie ma zastsowania");
+			throw new UnsupportedOperationException("Kolejka - dlugosc zbedna");
 		}
 	},
 	
 	KOLEJKA_FIFO_OGR_PR {
 		KolejkaFifoOgrPr stworz() {
-			throw new UnsupportedOperationException("\nDlugosc nieokreslona");
+			throw new UnsupportedOperationException("Kolejka - nieznana dlugosc");
 		}
 		
 		KolejkaFifoOgrPr stworz(int dlugosc) {
@@ -57,13 +55,13 @@ public enum Kolejka {
 		}
 		
 		KolejkaFifoNogrPr stworz(int dlugosc) {
-			throw new UnsupportedOperationException("\nPojecie dlugosci nie ma zastsowania");
+			throw new UnsupportedOperationException("Kolejka - dlugosc zbedna");
 		}
 	},
 	
 	KOLEJKA_LIFO_OGR_PR {
 		KolejkaLifoOgrPr stworz() {
-			throw new UnsupportedOperationException("\nDlugosc nieokreslona");
+			throw new UnsupportedOperationException("Kolejka - nieznana dlugosc");
 		}
 		
 		KolejkaLifoOgrPr stworz(int dlugosc) {
@@ -77,18 +75,19 @@ public enum Kolejka {
 		}
 		
 		KolejkaLifoNogrPr stworz(int dlugosc) {
-			throw new UnsupportedOperationException("\nPojecie dlugosci nie ma zastsowania");
+			throw new UnsupportedOperationException("Kolejka - dlugosc zbedna");
 		}
 	};
 	
 	abstract KolejkaI stworz();
+	
 	abstract KolejkaI stworz(int dlugosc);
 	
-	public static KolejkaI stworz(final String typKolejki) {
+	static KolejkaI stworz(final String typKolejki) {
 		return Kolejka.valueOf(typKolejki).stworz();
 	}
 	
-	public static KolejkaI stworz(final String typKolejki, final int dlugosc) {
-		return Kolejka.valueOf(typKolejki).stworz();
+	static KolejkaI stworz(final String typKolejki, final int dlugosc) {
+		return Kolejka.valueOf(typKolejki).stworz(dlugosc);
 	}
 }

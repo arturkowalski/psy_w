@@ -1,36 +1,38 @@
-package smo;
-
 import dissimlab.simcore.BasicSimObj;
 import dissimlab.simcore.SimControlException;
 import dissimlab.broker.IPublisher;
 import dissimlab.broker.INotificationEvent;
 import java.util.Comparator;
 
-public final class Zgloszenie extends BasicSimObj {
+final class Zgloszenie extends BasicSimObj {
 	private final int numer;
 	private final double czasNadejscia;
 	private final int priorytet;
-	private final OkresNiecierpliwieniaPoczatek okresNiecierpliwieniaPoczatek;
-	OkresNiecierpliwieniaKoniec okresNiecierpliwieniaKoniec;
+	private final OkresNiecierpliwosciPoczatek okresNiecierpliwosciPoczatek;
+	OkresNiecierpliwosciKoniec okresNiecierpliwosciKoniec;
 	final Smo smo;
 	
-	public Zgloszenie(final int numer, final double czasNadejscia, final int priorytet, final Smo smo) throws SimControlException {
+	Zgloszenie(final int numer, final double czasNadejscia, final int priorytet, final Smo smo) throws SimControlException {
 		if (czasNadejscia < 0.0) {
-			throw new IllegalArgumentException("\nCzas nadejscia mniejszy niz 0");
+			throw new IllegalArgumentException("Zgloszenie - czas nadejscia mniejszy niz 0");
 		}
 		
 		if (priorytet < 1 || priorytet > 10) {
-			throw new IllegalArgumentException("\nPriorytet spoza zakresu");
+			throw new IllegalArgumentException("Zgloszenie - priorytet spoza zakresu");
+		}
+		
+		if (smo == null) {
+			throw new IllegalArgumentException("Zgloszenie - smo rowne null");
 		}
 		
 		this.numer = numer;
 		this.czasNadejscia = czasNadejscia;
 		this.priorytet = priorytet;
-		okresNiecierpliwieniaPoczatek = new OkresNiecierpliwieniaPoczatek(this);
+		okresNiecierpliwosciPoczatek = new OkresNiecierpliwosciPoczatek(this);
 		this.smo = smo;
 	}
 	
-	public static Comparator<Zgloszenie> komparatorFifo() {
+	static Comparator<Zgloszenie> komparatorFifo() {
 		return (z1, z2) -> {
 			if (z1.priorytet < z2.priorytet || z1.priorytet == z2.priorytet && z1.numer > z2.numer) {
 				return +1;
@@ -44,7 +46,7 @@ public final class Zgloszenie extends BasicSimObj {
 		};
 	}
 	
-	public static Comparator<Zgloszenie> komparatorLifo() {
+	static Comparator<Zgloszenie> komparatorLifo() {
 		return (z1, z2) -> {
 			if (z1.priorytet < z2.priorytet || z1.priorytet == z2.priorytet && z1.numer < z2.numer) {
 				return +1;
@@ -58,25 +60,21 @@ public final class Zgloszenie extends BasicSimObj {
 		};
 	}
 	
-	public String toString() {
-		return "Zgloszenie " + numer + "/" + czasNadejscia + "/" + priorytet;
-	}
-	
 	public boolean filter(IPublisher ip, INotificationEvent ine) {
 		return false;
 	}
 	
 	public void reflect(IPublisher ip, INotificationEvent ine) {}
 	
-	public int numer() {
+	int numer() {
 		return numer;
 	}
 	
-	public double czasNadejscia() {
+	double czasNadejscia() {
 		return czasNadejscia;
 	}
 	
-	public int priorytet() {
+	int priorytet() {
 		return priorytet;
 	}
 }
