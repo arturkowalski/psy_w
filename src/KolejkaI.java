@@ -1,6 +1,6 @@
-public interface KolejkaI {
+interface KolejkaI {
 	default int dlugosc() {
-		throw new UnsupportedOperationException("\nKolejkaI - metoda dlugosc() niedostepna");
+		throw new UnsupportedOperationException("Metoda dlugosc() niedostepna");
 	}
 	
 	default boolean kolejkaPelna() {

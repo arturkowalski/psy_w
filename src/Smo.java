@@ -3,7 +3,7 @@ import dissimlab.simcore.SimControlException;
 import dissimlab.broker.IPublisher;
 import dissimlab.broker.INotificationEvent;
 
-public final class Smo extends BasicSimObj {
+final class Smo extends BasicSimObj {
 	private static final String[] typyKolejek;
 	private final KolejkaI kolejka;
 	private boolean gniazdoWolne;
@@ -20,7 +20,7 @@ public final class Smo extends BasicSimObj {
 		}
 	}
 	
-	public Smo(String typKolejki) throws SimControlException {
+	Smo(String typKolejki) throws SimControlException {
 		if (typKolejki == null) {
 			throw new IllegalArgumentException("Smo - typ kolejki rowny null");
 		}
@@ -42,7 +42,7 @@ public final class Smo extends BasicSimObj {
 		utylizator = new Utylizator();
 	}
 	
-	public Smo(String typKolejki, int dlugosc) throws SimControlException {
+	Smo(String typKolejki, int dlugosc) throws SimControlException {
 		if (typKolejki == null) {
 			throw new IllegalArgumentException("Smo - typ kolejki rowny null");
 		}
@@ -62,36 +62,36 @@ public final class Smo extends BasicSimObj {
 	
 	public void reflect(IPublisher publisher, INotificationEvent event) {}
 	
-	public boolean gniazdoWolne() {
+	boolean gniazdoWolne() {
 		return gniazdoWolne;
 	}
 	
-	public void zwolnijZablokuj(boolean zablokujZwolnij) {
+	void zwolnijZablokuj(boolean zablokujZwolnij) {
 		this.gniazdoWolne = zablokujZwolnij;
 	}
 	
-	public boolean kolejkaPelna() {
+	boolean kolejkaPelna() {
 		return kolejka.kolejkaPelna();
 	}
 	
-	public int stan() {
+	int stan() {
 		return kolejka.stan();
 	}
 	
-	public void wstaw(Zgloszenie zgloszenie) {
+	void wstaw(Zgloszenie zgloszenie) {
 		kolejka.wstaw(zgloszenie);
 	}
 	
-	public Zgloszenie usun() {
+	Zgloszenie usun() {
 		return kolejka.usun();
 	}
 	
-	public void usunWybrane(Zgloszenie zgloszenie) {
+	void usunWybrane(Zgloszenie zgloszenie) {
 		kolejka.usunWybrane(zgloszenie);
 		utylizator.zapamietaj();
 	}
 	
-	public int odrzucone() {
+	int odrzucone() {
 		return utylizator.odrzucone();
 	}
 }

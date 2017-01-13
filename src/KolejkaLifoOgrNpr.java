@@ -1,12 +1,12 @@
 import java.util.LinkedList;
 
-public final class KolejkaLifoOgrNpr implements KolejkaI {
+final class KolejkaLifoOgrNpr implements KolejkaI {
 	private final LinkedList<Zgloszenie> bufor;
-	private int dlugosc;
+	private final int dlugosc;
 	
-	public KolejkaLifoOgrNpr(final int dlugosc) {
+	KolejkaLifoOgrNpr(final int dlugosc) {
 		if (dlugosc <= 0) {
-			throw new IllegalArgumentException("KolejkaLifoOgrNpr - dlugosc mniejsza niz 1");
+			throw new IllegalArgumentException("Dlugosc mniejsza niz 1");
 		}
 		
 		bufor = new LinkedList<>();
@@ -31,7 +31,7 @@ public final class KolejkaLifoOgrNpr implements KolejkaI {
 	
 	public void wstaw(final Zgloszenie zgloszenie) {
 		if (kolejkaPelna()) {
-			throw new IllegalStateException("KolejkaLifoOgrNpr - kolejka pelna");
+			throw new IllegalStateException("Kolejka pelna");
 		}
 		
 		bufor.add(zgloszenie);
@@ -39,7 +39,7 @@ public final class KolejkaLifoOgrNpr implements KolejkaI {
 	
 	public Zgloszenie nastepne() {
 		if (kolejkaPusta()) {
-			throw new IllegalStateException("KolejkaLifoOgrNpr - kolejka pusta");
+			throw new IllegalStateException("Kolejka pusta");
 		}
 		
 		return bufor.getLast();
@@ -47,7 +47,7 @@ public final class KolejkaLifoOgrNpr implements KolejkaI {
 	
 	public Zgloszenie usun() {
 		if (kolejkaPusta()) {
-			throw new IllegalStateException("KolejkaLifoOgrNpr - kolejka pusta");
+			throw new IllegalStateException("Kolejka pusta");
 		}
 		
 		return bufor.removeLast();
@@ -55,7 +55,7 @@ public final class KolejkaLifoOgrNpr implements KolejkaI {
 	
 	public void usunWybrane(final Zgloszenie zgloszenie) {
 		if (kolejkaPusta()) {
-			throw new IllegalStateException("KolejkaLifoOgrNpr - kolejka pusta");
+			throw new IllegalStateException("Kolejka pusta");
 		}
 		
 		bufor.remove(zgloszenie);

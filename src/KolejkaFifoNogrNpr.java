@@ -1,9 +1,9 @@
 import java.util.LinkedList;
 
-public final class KolejkaFifoNogrNpr implements KolejkaI {
+final class KolejkaFifoNogrNpr implements KolejkaI {
 	private final LinkedList<Zgloszenie> bufor;
 	
-	public KolejkaFifoNogrNpr() {
+	KolejkaFifoNogrNpr() {
 		bufor = new LinkedList<>();
 	}
 	
@@ -21,7 +21,7 @@ public final class KolejkaFifoNogrNpr implements KolejkaI {
 	
 	public Zgloszenie nastepne() {
 		if (kolejkaPusta()) {
-			throw new IllegalStateException("KolejkaFifoNogrNpr - kolejka pusta");
+			throw new IllegalStateException("Kolejka pusta");
 		}
 		
 		return bufor.getFirst();
@@ -29,7 +29,7 @@ public final class KolejkaFifoNogrNpr implements KolejkaI {
 	
 	public Zgloszenie usun() {
 		if (kolejkaPusta()) {
-			throw new IllegalStateException("KolejkaFifoNogrNpr - kolejka pusta");
+			throw new IllegalStateException("Kolejka pusta");
 		}
 		
 		return bufor.removeFirst();
@@ -37,7 +37,7 @@ public final class KolejkaFifoNogrNpr implements KolejkaI {
 	
 	public void usunWybrane(final Zgloszenie zgloszenie) {
 		if (kolejkaPusta()) {
-			throw new IllegalStateException("KolejkaFifoNogrNpr - kolejka pusta");
+			throw new IllegalStateException("Kolejka pusta");
 		}
 		
 		bufor.remove(zgloszenie);

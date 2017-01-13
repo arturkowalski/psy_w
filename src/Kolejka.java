@@ -1,4 +1,4 @@
-public enum Kolejka {
+enum Kolejka {
 	KOLEJKA_FIFO_OGR_NPR {
 		KolejkaFifoOgrNpr stworz() {
 			throw new UnsupportedOperationException("Kolejka - nieznana dlugosc");
@@ -83,11 +83,11 @@ public enum Kolejka {
 	
 	abstract KolejkaI stworz(int dlugosc);
 	
-	public static KolejkaI stworz(final String typKolejki) {
+	static KolejkaI stworz(final String typKolejki) {
 		return Kolejka.valueOf(typKolejki).stworz();
 	}
 	
-	public static KolejkaI stworz(final String typKolejki, final int dlugosc) {
+	static KolejkaI stworz(final String typKolejki, final int dlugosc) {
 		return Kolejka.valueOf(typKolejki).stworz(dlugosc);
 	}
 }

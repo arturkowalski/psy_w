@@ -36,7 +36,7 @@ public class GeneratorZgloszen extends BasicSimEvent<Otoczenie, Object> {
 			otoczenieMatka.smo);
 		
 		otoczenieMatka.smo.wstaw(z);
-		System.out.printf("%016.9f: Zgloszenie numer %d dodane (priorytet rowny %d)\n",
+		System.out.printf("%017.9f: Zgloszenie numer %d dodane (priorytet rowny %d)\n",
 			simTime(), z.numer(), z.priorytet());
 		
 		if (otoczenieMatka.smo.stan() == 1 && otoczenieMatka.smo.gniazdoWolne()) {

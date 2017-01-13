@@ -1,18 +1,18 @@
 import java.util.PriorityQueue;
 import java.util.Comparator;
 
-public class KolejkaFifoOgrPr implements KolejkaI {
+final class KolejkaFifoOgrPr implements KolejkaI {
 	private final PriorityQueue<Zgloszenie> bufor;
-	private static final Comparator<Zgloszenie> komparator;
-	private int dlugosc;
+	private final static Comparator<Zgloszenie> komparator;
+	private final int dlugosc;
 	
 	static {
 		komparator = Zgloszenie.komparatorFifo();
 	}
 	
-	public KolejkaFifoOgrPr(final int dlugosc) {
+	KolejkaFifoOgrPr(final int dlugosc) {
 		if (dlugosc <= 0) {
-			throw new IllegalArgumentException("KolejkaFifoOgrPr - dlugosc mniejsza niz 1");
+			throw new IllegalArgumentException("Dlugosc mniejsza niz 1");
 		}
 		
 		bufor = new PriorityQueue<>(dlugosc, komparator);
@@ -37,7 +37,7 @@ public class KolejkaFifoOgrPr implements KolejkaI {
 	
 	public void wstaw(final Zgloszenie zgloszenie) {
 		if (kolejkaPelna()) {
-			throw new IllegalStateException("KolejkaFifoOgrPr - kolejka pelna");
+			throw new IllegalStateException("Kolejka pelna");
 		}
 		
 		bufor.add(zgloszenie);
@@ -45,7 +45,7 @@ public class KolejkaFifoOgrPr implements KolejkaI {
 	
 	public Zgloszenie nastepne() {
 		if (kolejkaPusta()) {
-			throw new IllegalStateException("KolejkaFifoOgrPr - kolejka pusta");
+			throw new IllegalStateException("Kolejka pusta");
 		}
 		
 		return bufor.peek();
@@ -53,7 +53,7 @@ public class KolejkaFifoOgrPr implements KolejkaI {
 	
 	public Zgloszenie usun() {
 		if (kolejkaPusta()) {
-			throw new IllegalStateException("KolejkaFifoOgrPr - kolejka pusta");
+			throw new IllegalStateException("Kolejka pusta");
 		}
 		
 		return bufor.poll();
@@ -61,7 +61,7 @@ public class KolejkaFifoOgrPr implements KolejkaI {
 	
 	public void usunWybrane(final Zgloszenie zgloszenie) {
 		if (kolejkaPusta()) {
-			throw new IllegalStateException("KolejkaFifoOgrPr - kolejka pusta");
+			throw new IllegalStateException("Kolejka pusta");
 		}
 		
 		bufor.remove(zgloszenie);

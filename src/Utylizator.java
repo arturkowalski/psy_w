@@ -1,13 +1,13 @@
-public final class Utylizator {
+final class Utylizator {
 	private int odrzucone;
 	
-	public Utylizator() {}
+	Utylizator() {}
 	
-	public void zapamietaj() {
+	void zapamietaj() {
 		++odrzucone;
 	}
 	
-	public int odrzucone() {
+	int odrzucone() {
 		return odrzucone;
 	}
 }

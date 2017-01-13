@@ -1,15 +1,15 @@
 import java.util.PriorityQueue;
 import java.util.Comparator;
 
-public class KolejkaFifoNogrPr implements KolejkaI {
+final class KolejkaFifoNogrPr implements KolejkaI {
 	private final PriorityQueue<Zgloszenie> bufor;
-	private static final Comparator<Zgloszenie> komparator;
+	private final static Comparator<Zgloszenie> komparator;
 	
 	static {
 		komparator = Zgloszenie.komparatorFifo();
 	}
 	
-	public KolejkaFifoNogrPr() {
+	KolejkaFifoNogrPr() {
 		bufor = new PriorityQueue<>(komparator);
 	}
 	
@@ -27,7 +27,7 @@ public class KolejkaFifoNogrPr implements KolejkaI {
 	
 	public Zgloszenie nastepne() {
 		if (kolejkaPusta()) {
-			throw new IllegalStateException("KolejkaFifoNogrPr - kolejka pusta");
+			throw new IllegalStateException("Kolejka pusta");
 		}
 		
 		return bufor.peek();
@@ -35,7 +35,7 @@ public class KolejkaFifoNogrPr implements KolejkaI {
 	
 	public Zgloszenie usun() {
 		if (kolejkaPusta()) {
-			throw new IllegalStateException("KolejkaFifoNogrPr - kolejka pusta");
+			throw new IllegalStateException("Kolejka pusta");
 		}
 		
 		return bufor.poll();
@@ -43,7 +43,7 @@ public class KolejkaFifoNogrPr implements KolejkaI {
 	
 	public void usunWybrane(final Zgloszenie zgloszenie) {
 		if (kolejkaPusta()) {
-			throw new IllegalStateException("KolejkaFifoNogrPr - kolejka pusta");
+			throw new IllegalStateException("Kolejka pusta");
 		}
 		
 		bufor.remove(zgloszenie);

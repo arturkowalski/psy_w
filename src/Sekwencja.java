@@ -1,4 +1,4 @@
-public final class Sekwencja {
+final class Sekwencja {
 	private final int pierwszy, roznica;
 	private int nastepny;
 	
@@ -7,7 +7,7 @@ public final class Sekwencja {
 		return c < 0x80000000 || c > 0x7FFFFFFF;
 	}
 	
-	public Sekwencja(final int pierwszy, final int roznica) {
+	Sekwencja(final int pierwszy, final int roznica) {
 		if (roznica == 0) {
 			throw new IllegalArgumentException("Sekwencja - roznica rowna 0");
 		}
@@ -17,23 +17,23 @@ public final class Sekwencja {
 		nastepny = pierwszy - roznica;
 	}
 	
-	public Sekwencja() {
+	Sekwencja() {
 		this(1, 1);
 	}
 	
-	public Sekwencja(final int pierwszy) {
+	Sekwencja(final int pierwszy) {
 		this(pierwszy, 1);
 	}
 	
-	public int pierwszy() {
+	int pierwszy() {
 		return pierwszy;
 	}
 	
-	public int roznica() {
+	int roznica() {
 		return roznica;
 	}
 	
-	public int nastepny() {
+	int nastepny() {
 		if (add(nastepny, roznica)) {
 			if (nastepny + roznica != pierwszy) {
 				throw new IllegalStateException("Sekwencja - sekwencja zuzyta");
@@ -42,23 +42,5 @@ public final class Sekwencja {
 		
 		nastepny += roznica;
 		return nastepny;
-	}
-	
-	public int[] nNastepnych(final int n) {
-		int[] wyn = new int[n];
-		
-		for (int i = 0; i < n; ++i) {
-			wyn[i] = nastepny();
-		}
-		
-		return wyn;
-	}
-	
-	public static void main(String[] args) {
-		Sekwencja numery = new Sekwencja(2000000000, -1000);
-		
-		while (true) {
-			System.out.println(numery.nastepny());
-		}
 	}
 }
