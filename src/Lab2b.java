@@ -14,8 +14,8 @@ class Lab2b {
 			"KOLEJKA_FIFO_NOGR_PR, KOLEJKA_LIFO_OGR_PR albo KOLEJKA_LIFO_NOGR_PR)\n");
 		
 		System.out.println("- dlugosc - dlugosc kolejki (int, tylko dla kolejek ograniczonych)\n");
-		System.out.println("- p - prawdopodobiensto, z jakim zgloszenie wroca na poczatek" +
-			"kolejki po obsludze\n  (double, tylko dla kolejek ograniczonych)\n");
+		System.out.println("- p - prawdopodobiensto, z jakim zgloszenie wraca na poczatek " +
+			"kolejki po obsludze (double, tylko dla kolejek ograniczonych)\n");
 		System.out.println("- czas - czas trwania symulacji (double)");
 	}
 	
@@ -61,9 +61,6 @@ class Lab2b {
 					smo.czasOczekiwania.getChanges().getMeanFromTimeRange(smo.czasOczekiwania.getHistogram().getMinValue(),
 						smo.czasOczekiwania.getHistogram().getMaxValue()) / smo.stan());
 				
-				System.out.println("Prawdopodobienstwo obsluzenia zgloszenia: " + (float) (smo.stan() -
-					smo.utylizator.odrzucone()) / smo.stan());
-				
 				Diagram diagram = new Diagram(Diagram.DiagramType.DISTRIBUTION, "Dlugosc kolejki");
 				diagram.add(otoczenie.smo.dlugoscKolejki, Color.BLACK);
 				diagram.show();
@@ -92,9 +89,6 @@ class Lab2b {
 				System.out.println("Wartosc oczekiwana czasu oczekiwania: " +
 					smo.czasOczekiwania.getChanges().getMeanFromTimeRange(smo.czasOczekiwania.getHistogram().getMinValue(),
 						smo.czasOczekiwania.getHistogram().getMaxValue()) / smo.stan());
-				
-				System.out.println("Prawdopodobienstwo obsluzenia zgloszenia: " + (float) (smo.stan() -
-					smo.utylizator.odrzucone()) / smo.stan());
 				
 				Diagram diagram = new Diagram(Diagram.DiagramType.DISTRIBUTION, "Dlugosc kolejki");
 				diagram.add(otoczenie.smo.dlugoscKolejki, Color.BLACK);

@@ -118,6 +118,10 @@ final class Smo extends BasicSimObj {
 		this.gniazdoWolne = zablokujZwolnij;
 	}
 	
+	int dlugosc() {
+		return kolejka.dlugosc();
+	}
+	
 	String typ() {
 		return kolejka.typ();
 	}

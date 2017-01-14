@@ -19,21 +19,26 @@ final class ObslugaKoniec extends BasicSimEvent<Smo, Zgloszenie> {
 		smoMatka.zwolnijZablokuj(true);
 		System.out.printf("%017.9f: Obsluga zgloszenia numer %d zakonczona\n", simTime(), transitionParams.numer());
 		
-		double t = Math.random();
+		String typ = smoMatka.typ();
 		
-		if (t >= smoMatka.prawdopodobienstwo) {
-			Zgloszenie z = new Zgloszenie(transitionParams.numer(), simTime(), transitionParams.priorytet(),
-				smoMatka);
+		if (typ.equals("KOLEJKA_FIFO_OGR_NPR") || typ.equals("KOLEJKA_LIFO_OGR_NPR") ||
+			typ.equals("KOLEJKA_FIFO_OGR_PR") || typ.equals("KOLEJKA_LIFO_OGR_PR")) {
+			double t = Math.random();
 			
-			if (smoMatka.kolejkaPelna()) {
-				System.out.printf("%017.9f: Kolejka pelna - proba umieszczenia zdarzenia %d na koncu kolejki nieudana\n\n",
-					simTime(), transitionParams.numer());
-				smoMatka.utylizator.zapamietaj();
+			if (t >= smoMatka.prawdopodobienstwo) {
+				Zgloszenie z = new Zgloszenie(transitionParams.numer(), simTime(), transitionParams.priorytet(),
+					smoMatka);
 				
-				return;
+				if (smoMatka.kolejkaPelna()) {
+					System.out.printf("%017.9f: Kolejka pelna - proba umieszczenia zdarzenia %d na koncu kolejki nieudana\n\n",
+						simTime(), transitionParams.numer());
+					smoMatka.utylizator.zapamietaj();
+					
+					return;
+				}
+				smoMatka.wstaw(z);
+				System.out.printf("%017.9f: Powrot zgloszenia %d na koniec kolejki\n\n", simTime(), transitionParams.numer());
 			}
-			smoMatka.wstaw(z);
-			System.out.printf("%017.9f: Powrot zgloszenia %d na koniec kolejki\n\n", simTime(), transitionParams.numer());
 		}
 		
 		if (smoMatka.stan() > 0) {
