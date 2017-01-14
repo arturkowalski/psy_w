@@ -61,6 +61,9 @@ class Lab2b {
 					smo.czasOczekiwania.getChanges().getMeanFromTimeRange(smo.czasOczekiwania.getHistogram().getMinValue(),
 						smo.czasOczekiwania.getHistogram().getMaxValue()) / smo.stan());
 				
+				System.out.println("Prawdopodobienstwo obsluzenia zgloszenia: " + (float) (smo.stan() -
+					smo.utylizator.odrzucone()) / smo.stan());
+				
 				Diagram diagram = new Diagram(Diagram.DiagramType.DISTRIBUTION, "Dlugosc kolejki");
 				diagram.add(otoczenie.smo.dlugoscKolejki, Color.BLACK);
 				diagram.show();
@@ -89,6 +92,10 @@ class Lab2b {
 				System.out.println("Wartosc oczekiwana czasu oczekiwania: " +
 					smo.czasOczekiwania.getChanges().getMeanFromTimeRange(smo.czasOczekiwania.getHistogram().getMinValue(),
 						smo.czasOczekiwania.getHistogram().getMaxValue()) / smo.stan());
+				
+				System.out.println("Prawdopodobienstwo obsluzenia zgloszenia: " + (float) (smo.stan() -
+					smo.utylizator.odrzucone()) / smo.stan());
+				
 				Diagram diagram = new Diagram(Diagram.DiagramType.DISTRIBUTION, "Dlugosc kolejki");
 				diagram.add(otoczenie.smo.dlugoscKolejki, Color.BLACK);
 				diagram.show();
