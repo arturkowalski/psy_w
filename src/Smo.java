@@ -9,7 +9,7 @@ final class Smo extends BasicSimObj {
 	private boolean gniazdoWolne;
 	ObslugaPoczatek obslugaPoczatek;
 	ObslugaKoniec obslugaKoniec;
-	private Utylizator utylizator;
+	Utylizator utylizator;
 	
 	static {
 		Kolejka[] kolejki = Kolejka.values();
@@ -22,7 +22,7 @@ final class Smo extends BasicSimObj {
 	
 	Smo(String typKolejki) throws SimControlException {
 		if (typKolejki == null) {
-			throw new IllegalArgumentException("Smo - typ kolejki rowny null");
+			throw new IllegalArgumentException("Typ kolejki rowny null");
 		}
 		
 		int i = 0;
@@ -34,7 +34,7 @@ final class Smo extends BasicSimObj {
 		}
 		
 		if (i == typyKolejek.length) {
-			throw new IllegalArgumentException("Smo - typ kolejki bledny");
+			throw new IllegalArgumentException("Typ kolejki bledny");
 		}
 		
 		kolejka = Kolejka.stworz(typKolejki);
@@ -44,11 +44,11 @@ final class Smo extends BasicSimObj {
 	
 	Smo(String typKolejki, int dlugosc) throws SimControlException {
 		if (typKolejki == null) {
-			throw new IllegalArgumentException("Smo - typ kolejki rowny null");
+			throw new IllegalArgumentException("Typ kolejki rowny null");
 		}
 		
 		if (dlugosc <= 0) {
-			throw new IllegalArgumentException("Smo - dlugosc mniejsza niz 1");
+			throw new IllegalArgumentException("Dlugosc mniejsza niz 1");
 		}
 		
 		kolejka = Kolejka.stworz(typKolejki, dlugosc);

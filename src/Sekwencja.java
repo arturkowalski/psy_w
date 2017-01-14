@@ -9,7 +9,7 @@ final class Sekwencja {
 	
 	Sekwencja(final int pierwszy, final int roznica) {
 		if (roznica == 0) {
-			throw new IllegalArgumentException("Sekwencja - roznica rowna 0");
+			throw new IllegalArgumentException("Roznica rowna 0");
 		}
 		
 		this.pierwszy = pierwszy;
@@ -36,7 +36,7 @@ final class Sekwencja {
 	int nastepny() {
 		if (add(nastepny, roznica)) {
 			if (nastepny + roznica != pierwszy) {
-				throw new IllegalStateException("Sekwencja - sekwencja zuzyta");
+				throw new IllegalStateException("Sekwencja zuzyta");
 			}
 		}
 		

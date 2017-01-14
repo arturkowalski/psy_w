@@ -4,19 +4,44 @@ import dissimlab.simcore.SimParameters.SimControlStatus;
 import dissimlab.simcore.SimControlException;
 
 class Lab2a {
+	private static void pomoc() {
+		System.out.println("java -cp dissimlab;. Lab2a {typ} [dlugosc] {czas}\n");
+		System.out.println("- dissimlab - sciezka do pliku dissimlab.jar\n");
+		System.out.println("- typ - typ kolejki (KOLEJKA_FIFO_OGR_NPR, KOLEJKA_FIFO_NOGR_NPR, " +
+			"KOLEJKA_LIFO_OGR_NPR, KOLEJKA_LIFO_NOGR_NPR,\n  KOLEJKA_FIFO_OGR_PR, " +
+			"KOLEJKA_FIFO_NOGR_PR, KOLEJKA_LIFO_OGR_PR albo KOLEJKA_LIFO_NOGR_PR)\n");
+		
+		System.out.println("- dlugosc - dlugosc kolejki (int, tylko dla kolejek ograniczonych)\n");
+		System.out.println("- czas - czas trwania symulacji (double)");
+	}
+	
 	public static void main(String[] args) {
 		if (args.length != 2 && args.length != 3) {
-			System.out.println("java -cp dissimlab;. Lab2a {typ} [dlugosc] {czas}\n");
-			System.out.println("- dissimlab - sciezka do pliku dissimlab.jar\n");
-			System.out.println("- typ - typ kolejki (KOLEJKA_FIFO_OGR_NPR, KOLEJKA_FIFO_NOGR_NPR, " +
-				"KOLEJKA_LIFO_OGR_NPR, KOLEJKA_LIFO_NOGR_NPR,\n  KOLEJKA_FIFO_OGR_PR, " +
-				"KOLEJKA_FIFO_NOGR_PR, KOLEJKA_LIFO_OGR_PR albo KOLEJKA_LIFO_NOGR_PR)\n");
+			pomoc();
+			return;
+		}
+		else {
+			Kolejka[] kolejki = Kolejka.values();
+			String[] typy = new String[kolejki.length];
+			int i = 0;
 			
-			System.out.println("- dlugosc - dlugosc kolejki (tylko dla kolejek ograniczonych\n");
-			System.out.println("- czas - czas trwania symulacji");
+			args[0] = args[0].toUpperCase();
+			
+			for ( ; i < typy.length; ++i) {
+				typy[i] = kolejki[i].name();
+				
+				if (args[0].equals(typy[i])) {
+					break;
+				}
+			}
+			
+			if (i == typy.length) {
+				pomoc();
+				return;
+			}
 		}
 		
-		else if (args.length == 2) {
+		if (args.length == 2) {
 			try {
 				SimManager model = SimManager.getInstance();
 				Smo smo = new Smo(args[0]);
@@ -26,6 +51,9 @@ class Lab2a {
 				
 				model.startSimulation();
 				System.out.println("Liczba straconych zgloszen: " + smo.odrzucone());
+			}
+			catch (NumberFormatException wyj) {
+				pomoc();
 			}
 			catch (SimControlException wyj) {
 				System.out.println(wyj.toString());
@@ -41,6 +69,9 @@ class Lab2a {
 				
 				model.startSimulation();
 				System.out.println("Liczba straconych zgloszen: " + smo.odrzucone());
+			}
+			catch (NumberFormatException wyj) {
+				pomoc();
 			}
 			catch (SimControlException wyj) {
 				System.out.println(wyj.toString());

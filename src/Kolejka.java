@@ -1,7 +1,7 @@
 enum Kolejka {
 	KOLEJKA_FIFO_OGR_NPR {
 		KolejkaFifoOgrNpr stworz() {
-			throw new UnsupportedOperationException("Kolejka - nieznana dlugosc");
+			throw new UnsupportedOperationException("Nieznana dlugosc");
 		}
 		
 		KolejkaFifoOgrNpr stworz(int dlugosc) {
@@ -15,13 +15,13 @@ enum Kolejka {
 		}
 		
 		KolejkaFifoNogrNpr stworz(int dlugosc) {
-			throw new UnsupportedOperationException("Kolejka - dlugosc zbedna");
+			throw new UnsupportedOperationException("Dlugosc zbedna");
 		}
 	},
 	
 	KOLEJKA_LIFO_OGR_NPR {
 		KolejkaLifoOgrNpr stworz() {
-			throw new UnsupportedOperationException("Kolejka - nieznana dlugosc");
+			throw new UnsupportedOperationException("Nieznana dlugosc");
 		}
 		
 		KolejkaLifoOgrNpr stworz(int dlugosc) {
@@ -35,13 +35,13 @@ enum Kolejka {
 		}
 		
 		KolejkaLifoNogrNpr stworz(int dlugosc) {
-			throw new UnsupportedOperationException("Kolejka - dlugosc zbedna");
+			throw new UnsupportedOperationException("Dlugosc zbedna");
 		}
 	},
 	
 	KOLEJKA_FIFO_OGR_PR {
 		KolejkaFifoOgrPr stworz() {
-			throw new UnsupportedOperationException("Kolejka - nieznana dlugosc");
+			throw new UnsupportedOperationException("Nieznana dlugosc");
 		}
 		
 		KolejkaFifoOgrPr stworz(int dlugosc) {
@@ -55,13 +55,13 @@ enum Kolejka {
 		}
 		
 		KolejkaFifoNogrPr stworz(int dlugosc) {
-			throw new UnsupportedOperationException("Kolejka - dlugosc zbedna");
+			throw new UnsupportedOperationException("Dlugosc zbedna");
 		}
 	},
 	
 	KOLEJKA_LIFO_OGR_PR {
 		KolejkaLifoOgrPr stworz() {
-			throw new UnsupportedOperationException("Kolejka - nieznana dlugosc");
+			throw new UnsupportedOperationException("Nieznana dlugosc");
 		}
 		
 		KolejkaLifoOgrPr stworz(int dlugosc) {
@@ -75,7 +75,7 @@ enum Kolejka {
 		}
 		
 		KolejkaLifoNogrPr stworz(int dlugosc) {
-			throw new UnsupportedOperationException("Kolejka - dlugosc zbedna");
+			throw new UnsupportedOperationException("Dlugosc zbedna");
 		}
 	};
 	
