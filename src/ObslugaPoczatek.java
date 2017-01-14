@@ -24,6 +24,8 @@ class ObslugaPoczatek extends BasicSimEvent<Smo, Zgloszenie> {
 			Zgloszenie z = smoMatka.usun();
 			z.okresNiecierpliwosciKoniec.interrupt();
 			double czasObslugi = generator.normal(9.0, 1.0);
+			smoMatka.czasOczekiwania.setValue(simTime() - z.czasOdniesienia(), simTime());
+			z.ustawCzasOdniesienia(simTime());
 			System.out.printf("%017.9f: Obsluga zgloszenia numer %d rozpoczeta (priorytet rowny %d)\n",
 				simTime(), z.numer(), z.priorytet());
 			

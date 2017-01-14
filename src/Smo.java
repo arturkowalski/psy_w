@@ -2,6 +2,7 @@ import dissimlab.simcore.BasicSimObj;
 import dissimlab.simcore.SimControlException;
 import dissimlab.broker.IPublisher;
 import dissimlab.broker.INotificationEvent;
+import dissimlab.monitors.MonitoredVar;
 
 final class Smo extends BasicSimObj {
 	private static final String[] typyKolejek;
@@ -9,6 +10,7 @@ final class Smo extends BasicSimObj {
 	private boolean gniazdoWolne;
 	ObslugaPoczatek obslugaPoczatek;
 	ObslugaKoniec obslugaKoniec;
+	MonitoredVar czasOczekiwania, dlugoscKolejki;
 	Utylizator utylizator;
 	
 	static {
@@ -34,25 +36,41 @@ final class Smo extends BasicSimObj {
 		}
 		
 		if (i == typyKolejek.length) {
-			throw new IllegalArgumentException("Typ kolejki bledny");
+			throw new IllegalArgumentException("Typ kolejki nierozpoznany");
 		}
 		
 		kolejka = Kolejka.stworz(typKolejki);
 		gniazdoWolne = true;
+		czasOczekiwania = new MonitoredVar();
+		dlugoscKolejki = new MonitoredVar();
 		utylizator = new Utylizator();
 	}
 	
 	Smo(String typKolejki, int dlugosc) throws SimControlException {
-		if (typKolejki == null) {
-			throw new IllegalArgumentException("Typ kolejki rowny null");
-		}
-		
 		if (dlugosc <= 0) {
 			throw new IllegalArgumentException("Dlugosc mniejsza niz 1");
 		}
 		
+		if (typKolejki == null) {
+			throw new IllegalArgumentException("Typ kolejki rowny null");
+		}
+		
+		int i = 0;
+		
+		for ( ; i < typyKolejek.length; ++i) {
+			if (typKolejki.equals(typyKolejek[i])) {
+				break;
+			}
+		}
+		
+		if (i == typyKolejek.length) {
+			throw new IllegalArgumentException("Typ kolejki nierozpoznany");
+		}
+		
 		kolejka = Kolejka.stworz(typKolejki, dlugosc);
 		gniazdoWolne = true;
+		czasOczekiwania = new MonitoredVar();
+		dlugoscKolejki = new MonitoredVar();
 		utylizator = new Utylizator();
 	}
 	
@@ -80,14 +98,18 @@ final class Smo extends BasicSimObj {
 	
 	void wstaw(Zgloszenie zgloszenie) {
 		kolejka.wstaw(zgloszenie);
+		dlugoscKolejki.setValue(kolejka.stan(), simTime());
 	}
 	
 	Zgloszenie usun() {
-		return kolejka.usun();
+		Zgloszenie z = kolejka.usun();
+		dlugoscKolejki.setValue(kolejka.stan(), simTime());
+		return z;
 	}
 	
 	void usunWybrane(Zgloszenie zgloszenie) {
 		kolejka.usunWybrane(zgloszenie);
+		dlugoscKolejki.setValue(kolejka.stan(), simTime());
 		utylizator.zapamietaj();
 	}
 	

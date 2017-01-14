@@ -27,7 +27,7 @@ public class GeneratorZgloszen extends BasicSimEvent<Otoczenie, Object> {
 		otoczenieMatka = getSimObj();
 		
 		if (otoczenieMatka.smo.kolejkaPelna()) {
-			System.out.println("\nKolejka pelna - proba stworzenia nowego zgloszenia przerwana\n");
+			System.out.println("Kolejka pelna - proba stworzenia nowego zgloszenia przerwana\n");
 			otoczenieMatka.smo.utylizator.zapamietaj();
 			
 			return;

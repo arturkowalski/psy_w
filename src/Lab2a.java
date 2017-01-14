@@ -2,6 +2,8 @@ import dissimlab.simcore.SimManager;
 import dissimlab.simcore.SimControlEvent;
 import dissimlab.simcore.SimParameters.SimControlStatus;
 import dissimlab.simcore.SimControlException;
+import dissimlab.monitors.Diagram;
+import java.awt.Color;
 
 class Lab2a {
 	private static void pomoc() {
@@ -48,9 +50,11 @@ class Lab2a {
 				Otoczenie otoczenie = new Otoczenie(smo);
 				SimControlEvent stop = new SimControlEvent(Double.parseDouble(args[1]),
 					SimControlStatus.STOPSIMULATION);
-				
 				model.startSimulation();
-				System.out.println("Liczba straconych zgloszen: " + smo.odrzucone());
+				System.out.println("\nLiczba straconych zgloszen: " + smo.odrzucone());
+				Diagram diagram = new Diagram(Diagram.DiagramType.HISTOGRAM, "Dlugosc kolejki");
+				diagram.add(otoczenie.smo.dlugoscKolejki, Color.BLACK);
+				diagram.show();
 			}
 			catch (NumberFormatException wyj) {
 				pomoc();
@@ -68,7 +72,10 @@ class Lab2a {
 					SimControlStatus.STOPSIMULATION);
 				
 				model.startSimulation();
-				System.out.println("Liczba straconych zgloszen: " + smo.odrzucone());
+				System.out.println("\nLiczba straconych zgloszen: " + smo.odrzucone());
+				Diagram diagram = new Diagram(Diagram.DiagramType.HISTOGRAM, "Dlugosc kolejki");
+				diagram.add(otoczenie.smo.dlugoscKolejki, Color.BLACK);
+				diagram.show();
 			}
 			catch (NumberFormatException wyj) {
 				pomoc();

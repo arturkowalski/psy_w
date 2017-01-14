@@ -6,14 +6,14 @@ import java.util.Comparator;
 
 final class Zgloszenie extends BasicSimObj {
 	private final int numer;
-	private final double czasNadejscia;
+	private double czasOdniesienia;
 	private final int priorytet;
 	private final OkresNiecierpliwosciPoczatek okresNiecierpliwosciPoczatek;
 	OkresNiecierpliwosciKoniec okresNiecierpliwosciKoniec;
 	final Smo smo;
 	
-	Zgloszenie(final int numer, final double czasNadejscia, final int priorytet, final Smo smo) throws SimControlException {
-		if (czasNadejscia < 0.0) {
+	Zgloszenie(final int numer, final double czasOdniesienia, final int priorytet, final Smo smo) throws SimControlException {
+		if (czasOdniesienia < 0.0) {
 			throw new IllegalArgumentException("Czas nadejscia mniejszy niz 0");
 		}
 		
@@ -26,7 +26,7 @@ final class Zgloszenie extends BasicSimObj {
 		}
 		
 		this.numer = numer;
-		this.czasNadejscia = czasNadejscia;
+		this.czasOdniesienia = czasOdniesienia;
 		this.priorytet = priorytet;
 		okresNiecierpliwosciPoczatek = new OkresNiecierpliwosciPoczatek(this);
 		this.smo = smo;
@@ -70,11 +70,15 @@ final class Zgloszenie extends BasicSimObj {
 		return numer;
 	}
 	
-	double czasNadejscia() {
-		return czasNadejscia;
+	double czasOdniesienia() {
+		return czasOdniesienia;
 	}
 	
 	int priorytet() {
 		return priorytet;
+	}
+	
+	void ustawCzasOdniesienia(double czasOdniesienia) {
+		this.czasOdniesienia = czasOdniesienia;
 	}
 }
