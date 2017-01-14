@@ -11,6 +11,7 @@ final class Smo extends BasicSimObj {
 	ObslugaPoczatek obslugaPoczatek;
 	ObslugaKoniec obslugaKoniec;
 	MonitoredVar czasOczekiwania, dlugoscKolejki;
+	double prawdopodobienstwo;
 	Utylizator utylizator;
 	
 	static {
@@ -74,6 +75,35 @@ final class Smo extends BasicSimObj {
 		utylizator = new Utylizator();
 	}
 	
+	Smo(String typKolejki, int dlugosc, double prawdopodobienstwo) throws SimControlException {
+		if (dlugosc <= 0) {
+			throw new IllegalArgumentException("Dlugosc mniejsza niz 1");
+		}
+		
+		if (typKolejki == null) {
+			throw new IllegalArgumentException("Typ kolejki rowny null");
+		}
+		
+		int i = 0;
+		
+		for ( ; i < typyKolejek.length; ++i) {
+			if (typKolejki.equals(typyKolejek[i])) {
+				break;
+			}
+		}
+		
+		if (i == typyKolejek.length) {
+			throw new IllegalArgumentException("Typ kolejki nierozpoznany");
+		}
+		
+		kolejka = Kolejka.stworz(typKolejki, dlugosc);
+		gniazdoWolne = true;
+		czasOczekiwania = new MonitoredVar();
+		dlugoscKolejki = new MonitoredVar();
+		this.prawdopodobienstwo = prawdopodobienstwo;
+		utylizator = new Utylizator();
+	}
+	
 	public boolean filter(IPublisher publisher, INotificationEvent event) {
 		return false;
 	}
@@ -86,6 +116,10 @@ final class Smo extends BasicSimObj {
 	
 	void zwolnijZablokuj(boolean zablokujZwolnij) {
 		this.gniazdoWolne = zablokujZwolnij;
+	}
+	
+	String typ() {
+		return kolejka.typ();
 	}
 	
 	boolean kolejkaPelna() {

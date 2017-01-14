@@ -7,6 +7,8 @@ interface KolejkaI {
 		return false;
 	}
 	
+	String typ();
+	
 	boolean kolejkaPusta();
 	
 	int stan();

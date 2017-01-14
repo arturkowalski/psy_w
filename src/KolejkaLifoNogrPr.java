@@ -13,6 +13,10 @@ final class KolejkaLifoNogrPr implements KolejkaI {
 		bufor = new PriorityQueue<>(komparator);
 	}
 	
+	public String typ() {
+		return "KOLEJKA_LIFO_NOGR_PR";
+	}
+	
 	public boolean kolejkaPusta() {
 		return bufor.isEmpty();
 	}

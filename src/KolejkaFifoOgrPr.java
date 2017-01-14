@@ -27,6 +27,10 @@ final class KolejkaFifoOgrPr implements KolejkaI {
 		return bufor.size() == dlugosc;
 	}
 	
+	public String typ() {
+		return "KOLEJKA_FIFO_OGR_PR";
+	}
+	
 	public boolean kolejkaPusta() {
 		return bufor.isEmpty();
 	}

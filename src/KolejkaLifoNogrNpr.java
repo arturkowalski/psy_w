@@ -7,6 +7,10 @@ final class KolejkaLifoNogrNpr implements KolejkaI {
 		bufor = new LinkedList<>();
 	}
 	
+	public String typ() {
+		return "KOLEJKA_LIFO_NOGR_NPR";
+	}
+	
 	public boolean kolejkaPusta() {
 		return bufor.isEmpty();
 	}

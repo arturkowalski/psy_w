@@ -19,6 +19,16 @@ final class ObslugaKoniec extends BasicSimEvent<Smo, Zgloszenie> {
 		smoMatka.zwolnijZablokuj(true);
 		System.out.printf("%017.9f: Obsluga zgloszenia numer %d zakonczona\n", simTime(), transitionParams.numer());
 		
+		double t = Math.random();
+		
+		if (t >= smoMatka.prawdopodobienstwo) {
+			Zgloszenie z = new Zgloszenie(transitionParams.numer(), simTime(), transitionParams.priorytet(),
+				smoMatka);
+			
+			smoMatka.wstaw(z);
+			System.out.printf("%017.9f: Powrot zgloszenia %d na koniec kolejki\n\n", simTime(), transitionParams.numer());
+		}
+		
 		if (smoMatka.stan() > 0) {
 			smoMatka.obslugaPoczatek = new ObslugaPoczatek(smoMatka);
 		}

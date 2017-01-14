@@ -13,6 +13,10 @@ final class KolejkaFifoNogrPr implements KolejkaI {
 		bufor = new PriorityQueue<>(komparator);
 	}
 	
+	public String typ() {
+		return "KOLEJKA_FIFO_NOGR_PR";
+	}
+	
 	public boolean kolejkaPusta() {
 		return bufor.isEmpty();
 	}

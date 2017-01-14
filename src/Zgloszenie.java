@@ -34,10 +34,10 @@ final class Zgloszenie extends BasicSimObj {
 	
 	static Comparator<Zgloszenie> komparatorFifo() {
 		return (z1, z2) -> {
-			if (z1.priorytet < z2.priorytet || z1.priorytet == z2.priorytet && z1.numer > z2.numer) {
+			if (z1.priorytet < z2.priorytet || z1.priorytet == z2.priorytet && z1.czasOdniesienia > z2.czasOdniesienia) {
 				return +1;
 			}
-			else if (z1.priorytet == z2.priorytet && z1.numer == z2.numer) {
+			else if (z1.priorytet == z2.priorytet && z1.czasOdniesienia == z2.czasOdniesienia) {
 				return 0;
 			}
 			else {
@@ -48,10 +48,10 @@ final class Zgloszenie extends BasicSimObj {
 	
 	static Comparator<Zgloszenie> komparatorLifo() {
 		return (z1, z2) -> {
-			if (z1.priorytet < z2.priorytet || z1.priorytet == z2.priorytet && z1.numer < z2.numer) {
+			if (z1.priorytet < z2.priorytet || z1.priorytet == z2.priorytet && z1.czasOdniesienia < z2.czasOdniesienia) {
 				return +1;
 			}
-			else if (z1.priorytet == z2.priorytet && z1.numer == z2.numer) {
+			else if (z1.priorytet == z2.priorytet && z1.czasOdniesienia == z2.czasOdniesienia) {
 				return 0;
 			}
 			else {

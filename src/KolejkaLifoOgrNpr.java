@@ -21,6 +21,10 @@ final class KolejkaLifoOgrNpr implements KolejkaI {
 		return bufor.size() == dlugosc;
 	}
 	
+	public String typ() {
+		return "KOLEJKA_LIFO_OGR_NPR";
+	}
+	
 	public boolean kolejkaPusta() {
 		return bufor.isEmpty();
 	}

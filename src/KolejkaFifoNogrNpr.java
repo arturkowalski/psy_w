@@ -7,6 +7,10 @@ final class KolejkaFifoNogrNpr implements KolejkaI {
 		bufor = new LinkedList<>();
 	}
 	
+	public String typ() {
+		return "KOLEJKA_FIFO_NOGR_NPR";
+	}
+	
 	public boolean kolejkaPusta() {
 		return bufor.isEmpty();
 	}
