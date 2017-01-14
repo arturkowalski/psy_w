@@ -25,6 +25,13 @@ final class ObslugaKoniec extends BasicSimEvent<Smo, Zgloszenie> {
 			Zgloszenie z = new Zgloszenie(transitionParams.numer(), simTime(), transitionParams.priorytet(),
 				smoMatka);
 			
+			if (smoMatka.kolejkaPelna()) {
+				System.out.printf("%017.9f: Kolejka pelna - proba umieszczenia zdarzenia %d na koncu kolejki nieudana\n\n",
+					simTime(), transitionParams.numer());
+				smoMatka.utylizator.zapamietaj();
+				
+				return;
+			}
 			smoMatka.wstaw(z);
 			System.out.printf("%017.9f: Powrot zgloszenia %d na koniec kolejki\n\n", simTime(), transitionParams.numer());
 		}

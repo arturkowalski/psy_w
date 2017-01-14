@@ -5,7 +5,7 @@ import dissimlab.simcore.SimControlException;
 import dissimlab.monitors.Diagram;
 import java.awt.Color;
 
-class Lab2a {
+class Lab2b {
 	private static void pomoc() {
 		System.out.println("java -cp dissimlab;. Lab2a {typ} [dlugosc p] {czas}\n");
 		System.out.println("- dissimlab - sciezka do pliku dissimlab.jar\n");
